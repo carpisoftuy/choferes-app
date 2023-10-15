@@ -12,6 +12,8 @@ const HAMBURGUESA = document.getElementById("hamburguesa");
 const CODCONT = document.getElementById("codigo-container")
 const LUPA = document.getElementById("lupa")
 const txtVariado = document.getElementsByClassName("textoVariado")
+const IDIOMA = document.getElementById("idioma")
+const CLICK = document.getElementById("click")
 
 ///variables color tema claro////
 
@@ -69,6 +71,10 @@ function estilosTemaClaro(){
 
     HAMBURGUESA.style.backgroundColor = colorFuenteTemaClaro;
 
+    IDIOMA.style.color = colorFuenteTemaClaro;
+
+    CLICK.style.color = backgroundTemaClaro;
+
 }
 
 function estilosTemaOscuro(){
@@ -115,6 +121,8 @@ function estilosTemaOscuro(){
     })
 
     HAMBURGUESA.style.backgroundColor = "var(--color-fuente)";
+
+    IDIOMA.style.color = "var(--color-fuente)";
 
 }
 

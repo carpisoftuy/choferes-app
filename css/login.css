@@ -297,7 +297,7 @@ input:checked + .slider:before {
 }
 
 #switch{
-  width: 20px;
+  width: 0px;
 }
 
 
@@ -307,6 +307,14 @@ input:checked + .slider:before {
       height: 60px;
       justify-content:space-between;
       align-items: center;
+  }
+
+  .list-element-logo{
+    display: none;
+  }
+
+  .list-element{
+    margin-top: 20px;
   }
   
   .checkbtn{
@@ -337,7 +345,7 @@ input:checked + .slider:before {
   }
   
   .nav-list{
-      position: fixed;
+      position: absolute;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;

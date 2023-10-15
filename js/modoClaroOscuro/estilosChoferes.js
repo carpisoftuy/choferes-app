@@ -12,6 +12,7 @@ const LI = document.querySelectorAll("li");
 const HAMBURGUESA = document.getElementById("hamburguesa");
 const TH = document.querySelectorAll("th")
 const BTN = document.querySelectorAll("button")
+const BIENVENIDO = document.getElementById("bienvenidoChofer")
 
 ///variables color tema claro////
 
@@ -55,11 +56,14 @@ function estilosTemaClaro(){
     })
 
     H1.forEach(h=>{
-        h.style.color = backgroundTemaClaro;
+        h.style.color = colorFuenteTemaClaro;
     })
+
+    BIENVENIDO.style.color = backgroundTemaClaro
 
     BTN.forEach(btn =>{
         btn.style.color = "#fff";
+        btn.style.backgroundColor = backgroundTemaClaro
     })
 
     FOOTER.style.backgroundColor = backgroundTemaClaro;
@@ -85,7 +89,6 @@ function estilosTemaOscuro(){
     HIPERVINCULOS.forEach(hiper =>{
         hiper.style.color = "var(--color-fuente)";
     })
-
 
     NAVBAR.forEach(nav =>{
         nav.style.backgroundColor = "var(--color-principal)";
@@ -114,6 +117,7 @@ function estilosTemaOscuro(){
 
     BTN.forEach(btn =>{
         btn.style.color = "var(--color-fuente)";
+        btn.style.backgroundColor = "var(--color-principal)"
     })
 
     FOOTER.style.backgroundColor = "var(--color-principal)";
@@ -123,6 +127,8 @@ function estilosTemaOscuro(){
     })
 
     HAMBURGUESA.style.backgroundColor = "var(--color-fuente)";
+
+    BIENVENIDO.style.color = "var(--color-fuente)"
 
 }
 
