@@ -174,11 +174,11 @@ tr:last-child td:last-child{
 }
 
 .btn-guardar{
+    margin: 20px;
     width: 150px;
     height: 40px;
     border-radius: 5px;
     border: none;
-    margin-top: 20px;
     background-color: var(--background-ham);
     font-weight: bold;
     font-family: 'Poppins', sans-serif;

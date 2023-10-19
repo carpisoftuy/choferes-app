@@ -63,7 +63,7 @@ fetch(URL_PAQUETES_PARA_ENTREGAR)
                     <td>${datos_paquete.direccion}</td>
                     <td><a class="googleMaps" id="paquete${datos_paquete.id}" href="#" latitud="${datos_paquete.latitud}" longitud="${datos_paquete.longitud}">Google maps</a></td>
                     <td>#1</td>
-                    <td><button id="btn${datos_paquete.id}" class="btn-guardar" onclick="entregarPaquete(${datos_paquete.id})">Entregar</button></td>
+                    <td><button id="btn${datos_paquete.id}" class="btn-guardar btn-entregar" onclick="entregarPaquete(${datos_paquete.id})">Entregar</button></td>
                 </tr>
                 
                 `

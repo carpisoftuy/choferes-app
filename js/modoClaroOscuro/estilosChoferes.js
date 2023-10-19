@@ -14,6 +14,7 @@ const TH = document.querySelectorAll("th")
 const BTN = document.querySelectorAll("button")
 const BIENVENIDO = document.getElementById("bienvenidoChofer")
 
+
 ///variables color tema claro////
 
 let colorFuenteTemaClaro = "#FFF"
