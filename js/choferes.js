@@ -1,7 +1,22 @@
+function entregarPaquete(id) {
+
+  $.ajax({
+    method: "POST",
+    url: "http://127.0.0.1:8000/api/v1/paquetes/entregar/",
+    data: { id: id },
+    success: function(response){
+      
+      console.log(response)
+      window.location.reload();
+      
+
+    }
+  })
+  
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
-
-
-
 
 let URL_PAQUETES_PARA_ENTREGAR = "http://127.0.0.1:8000/api/v1/paquetes/paraEntregar/"
 
@@ -46,10 +61,9 @@ fetch(URL_PAQUETES_PARA_ENTREGAR)
                 <tr>
                     <td>${datos_paquete.id}</td>
                     <td>${datos_paquete.direccion}</td>
-                    <td><a class="googleMaps" id="paquete${datos_paquete.id}" href="#">Google maps</a></td>
-                    <td>Jose Sanchez</td>
+                    <td><a class="googleMaps" id="paquete${datos_paquete.id}" href="#" latitud="${datos_paquete.latitud}" longitud="${datos_paquete.longitud}">Google maps</a></td>
                     <td>#1</td>
-                    <td><input type="checkbox"></td>
+                    <td><button id="btn${datos_paquete.id}" class="btn-guardar" onclick="entregarPaquete(${datos_paquete.id})">Entregar</button></td>
                 </tr>
                 
                 `
@@ -59,8 +73,8 @@ fetch(URL_PAQUETES_PARA_ENTREGAR)
                   link.addEventListener('click', function(event) {
             
                     event.preventDefault();
-                    const packageLatitude = datos_paquete.latitud;
-                    const packageLongitude = datos_paquete.longitud;
+                    const packageLatitude = parseFloat(event.target.getAttribute('latitud'));
+                    const packageLongitude = parseFloat(event.target.getAttribute('longitud'));
             
                     console.log(packageLatitude + " " + packageLongitude)
 
@@ -111,3 +125,6 @@ fetch(URL_PAQUETES_PARA_ENTREGAR)
     }); 
 
     });
+
+
+    

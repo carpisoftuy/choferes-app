@@ -12,7 +12,6 @@ let txtContactenos = document.getElementById("contactenos")
 let txtBienvenido = document.getElementById("bienvenidoChofer")
 let txtNroPaquete = document.getElementById("nroPaquete")
 let txtDireccion = document.getElementById("direccion")
-let txtDestinatario = document.getElementById("destinatario")
 let txtBulto = document.getElementById("bulto")
 let txtEnvioEntregado = document.getElementById("envioEntregado")
 let txtGuardarCambios = document.getElementById("guardarCambios")
@@ -30,9 +29,8 @@ function traducirAIngles(){
     txtBienvenido.innerHTML = "Welcome driver"
     txtNroPaquete.innerHTML = "Package number"
     txtDireccion.innerHTML = "Address"
-    txtDestinatario.innerHTML = "Addressee"
     txtBulto.innerHTML = "Bulk"
-    txtEnvioEntregado.innerHTML = "Shipment delivered"
+    txtEnvioEntregado.innerHTML = "Mark as delivered"
     txtGuardarCambios.innerHTML = "Save changes"
 
 }
@@ -50,9 +48,8 @@ function traducirAEspanol(){
     txtBienvenido.innerHTML = "Bienvenido chofer"
     txtNroPaquete.innerHTML = "nro paquete"
     txtDireccion.innerHTML = "Dirección"
-    txtDestinatario.innerHTML = "Destinatario"
     txtBulto.innerHTML = "Bulto"
-    txtEnvioEntregado.innerHTML = "Envío entregado"
+    txtEnvioEntregado.innerHTML = "Entregar paquete"
     txtGuardarCambios.innerHTML = "Guardar cambios"
 
 }
