@@ -1,3 +1,5 @@
+let latitud_longitud_paquete = [];
+
 function entregarPaquete(id) {
 
   $.ajax({
@@ -52,6 +54,14 @@ fetch(URL_PAQUETES_PARA_ENTREGAR)
                 console.log(detalle);
                 datos_paquete = detalle[0]
 
+                latitud_longitud_paquete.push({
+            
+                  id: datos_paquete.id,
+                  latitud: datos_paquete.latitud,
+                  longitud: datos_paquete.longitud
+                  
+                });
+
                 //insertar los datos en el front-end
 
                 let tabla_body = document.getElementById("tabla_body")
@@ -64,6 +74,7 @@ fetch(URL_PAQUETES_PARA_ENTREGAR)
                     <td><a class="googleMaps" id="paquete${datos_paquete.id}" href="#" latitud="${datos_paquete.latitud}" longitud="${datos_paquete.longitud}">Google maps</a></td>
                     <td>#1</td>
                     <td><button id="btn${datos_paquete.id}" class="btn-guardar btn-entregar" onclick="entregarPaquete(${datos_paquete.id})">Entregar</button></td>
+                    <td><input type="checkbox" id="check${datos_paquete.id}"></td>
                 </tr>
                 
                 `
@@ -126,5 +137,66 @@ fetch(URL_PAQUETES_PARA_ENTREGAR)
 
     });
 
-
     
+    let btn = document.getElementById("guardarCambios")
+    let paquetesSeleccionados = [];
+
+
+    btn.addEventListener("click", function(){
+
+      let paquetesSeleccionadosNuevos = [];
+
+      latitud_longitud_paquete.forEach(element => {
+          let id = element.id;
+          let checkbox = document.getElementById(`check${id}`);
+          if (checkbox.checked) {
+              paquetesSeleccionadosNuevos.push({
+                  id: element.id,
+                  latitud: element.latitud,
+                  longitud: element.longitud
+              });
+          }
+      });
+  
+      console.log("Paquetes seleccionados:", paquetesSeleccionadosNuevos);
+
+
+      if (paquetesSeleccionadosNuevos.length > 0) {
+        // Crear un arreglo de waypoints
+        const waypoints = paquetesSeleccionadosNuevos.map(paquete => ({
+          location: new google.maps.LatLng(paquete.latitud, paquete.longitud),
+          stopover: true
+        }));
+    
+        const directionsService = new google.maps.DirectionsService();
+    
+        // Configurar la solicitud con la ubicación de origen y destino
+        const request = {
+          origin: new google.maps.LatLng(-34.8681439523412, -56.166493557192815), // Origen (cambia por tus coordenadas)
+          destination: new google.maps.LatLng(-34.8681439523412, -56.166493557192815), // Inicializar en el mismo origen
+          waypoints: waypoints,
+          optimizeWaypoints: true, // Optimizar el orden de los waypoints
+          travelMode: google.maps.TravelMode.DRIVING
+        };
+    
+        // Realizar la solicitud para calcular la ruta
+        directionsService.route(request, function(result, status) {
+          if (status === google.maps.DirectionsStatus.OK) {
+            const map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 10,
+              center: new google.maps.LatLng(-34.8681439523412, -56.166493557192815)
+            });
+            const directionsDisplay = new google.maps.DirectionsRenderer();
+            directionsDisplay.setMap(map);
+    
+            // Mostrar la ruta óptima en el mapa
+            directionsDisplay.setDirections(result);
+          } else {
+            console.error('Error al calcular la ruta: ' + status);
+          }
+        });
+      } else {
+        console.log("No se han seleccionado paquetes para entregar.");
+      }
+
+    })                

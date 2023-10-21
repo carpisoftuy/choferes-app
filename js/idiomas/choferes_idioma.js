@@ -32,7 +32,7 @@ function traducirAIngles(){
     txtDireccion.innerHTML = "Address"
     txtBulto.innerHTML = "Bulk"
     txtEnvioEntregado.innerHTML = "Mark as delivered"
-    txtGuardarCambios.innerHTML = "Save changes"
+    txtGuardarCambios.innerHTML = "Create path"
     
     for (let i = 0; i < txtEntregar.length; i++) {
         txtEntregar[i].innerHTML = "Deliver";
@@ -55,7 +55,7 @@ function traducirAEspanol(){
     txtDireccion.innerHTML = "Dirección"
     txtBulto.innerHTML = "Bulto"
     txtEnvioEntregado.innerHTML = "Entregar paquete"
-    txtGuardarCambios.innerHTML = "Guardar cambios"
+    txtGuardarCambios.innerHTML = "Crear ruta"
     
     for (let i = 0; i < txtEntregar.length; i++) {
         txtEntregar[i].innerHTML = "Entregar";
