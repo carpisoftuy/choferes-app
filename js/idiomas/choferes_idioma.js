@@ -16,6 +16,7 @@ let txtBulto = document.getElementById("bulto")
 let txtEnvioEntregado = document.getElementById("envioEntregado")
 let txtGuardarCambios = document.getElementById("guardarCambios")
 let txtEntregar = document.getElementsByClassName("btn-entregar")
+let txtRuta = document.getElementById("ruta")
 
 function traducirAIngles(){
 
@@ -32,6 +33,7 @@ function traducirAIngles(){
     txtDireccion.innerHTML = "Address"
     txtBulto.innerHTML = "Bulk"
     txtEnvioEntregado.innerHTML = "Mark as delivered"
+    txtRuta.innerHTML = "Create path"
     txtGuardarCambios.innerHTML = "Create path"
     
     for (let i = 0; i < txtEntregar.length; i++) {
@@ -56,6 +58,7 @@ function traducirAEspanol(){
     txtBulto.innerHTML = "Bulto"
     txtEnvioEntregado.innerHTML = "Entregar paquete"
     txtGuardarCambios.innerHTML = "Crear ruta"
+    txtRuta.innerHTML = "Crear ruta"
     
     for (let i = 0; i < txtEntregar.length; i++) {
         txtEntregar[i].innerHTML = "Entregar";
