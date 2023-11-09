@@ -1,10 +1,11 @@
 let latitud_longitud_paquete = [];
+let tablaBultosCargados = document.getElementById("tabla_bultos_cargados")
 
 function entregarPaquete(id) {
 
   $.ajax({
     method: "POST",
-    url: "http://127.0.0.1:8000/api/v1/paquetes/entregar/",
+    url: "http://127.0.0.1:8002/api/v1/paquetes/entregar/",
     data: { id: id },
     success: function(response){
       
@@ -20,9 +21,75 @@ function entregarPaquete(id) {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-let URL_PAQUETES_PARA_ENTREGAR = "http://127.0.0.1:8000/api/v1/paquetes/paraEntregar/"
+let URL_PAQUETES_PARA_ENTREGAR = "http://127.0.0.1:8002/api/v1/paquetes/paraEntregar/"
 
-let URL_DETALLE_PAQUETE = "http://127.0.0.1:8000/api/v1/paquetes/paraEntregar/detalle/"
+let URL_DETALLE_PAQUETE = "http://127.0.0.1:8002/api/v1/paquetes/paraEntregar/detalle/"
+
+let URL_BULTOS_CARGADOS = "http://127.0.0.1:8002/api/v1/bultos/cargados"
+
+let URL_ALMACENES = "http://127.0.0.1:8002/api/v1/almacenes/"
+
+fetch(URL_BULTOS_CARGADOS)
+
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('La solicitud no pudo ser completada.');
+                }
+                return response.json();
+            })
+
+            .then(bultosCargados => {
+
+              //fetch nuevo para consguir ubicaciones de almacenes
+
+              fetch(URL_ALMACENES)
+
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('La solicitud no pudo ser completada.');
+                }
+                return response.json();
+              })
+
+              .then(almacenes =>{
+
+                console.log(almacenes)
+                console.log(bultosCargados)
+
+                bultosCargados.forEach(bulto =>{
+
+                    tablaBultosCargados.innerHTML += `
+                    
+                    <tr>
+                        <td>${bulto.id_bulto}</td>
+                        <td>${bulto.matricula}</td>
+                        <td><select id="selectAlmacen${bulto.id}" class="selectBulto"></select></td>
+                        <td><button>Descargar</button></td>
+                    </tr>
+                    
+                    `
+
+                  })
+
+                  let selectBultos = document.getElementsByClassName("selectBulto")
+
+                  for(i=0; i<selectBultos.length;i++){
+
+                    almacenes.forEach(almacen=>{
+
+                    selectBultos[i].innerHTML += `
+                    
+                    <option>${almacen.direccion}</option>
+            
+                    `
+
+                    })
+        
+                }
+
+              })
+
+            })
 
 fetch(URL_PAQUETES_PARA_ENTREGAR)
 
