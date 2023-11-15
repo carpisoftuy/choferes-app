@@ -16,8 +16,8 @@ btn.addEventListener("click",function(e){
         },
 
         success: function(data) {
-            window.location.href = "choferes.html"
             localStorage.setItem("token", data.user.token)
+            window.location.href = "choferes.html"
         },
 
         error: function(error){
