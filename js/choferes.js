@@ -159,18 +159,15 @@ fetch(URL_PAQUETES_PARA_ENTREGAR)
 
                     const directionsService = new google.maps.DirectionsService();
       
-                    // Configura la solicitud con la ubicación de origen y destino.
                     const request = {
-                      origin: new google.maps.LatLng(-34.8681439523412, -56.166493557192815), // Cambia por tus coordenadas de origen
-                      destination: new google.maps.LatLng(packageLatitude, packageLongitude), // Coordenadas ingresadas por el usuario
-                      travelMode: google.maps.TravelMode.DRIVING, // Puedes cambiar el modo de viaje según tus necesidades
+                      origin: new google.maps.LatLng(-34.8681439523412, -56.166493557192815),
+                      destination: new google.maps.LatLng(packageLatitude, packageLongitude),
+                      travelMode: google.maps.TravelMode.DRIVING, 
                     };
                   
                     // Realiza la solicitud para calcular la ruta.
                     directionsService.route(request, function (result, status) {
                       if (status === google.maps.DirectionsStatus.OK) {
-                        // El resultado contiene la ruta más cercana.
-                        // Puedes mostrarlo en el mapa o procesarlo como desees.
                         const map = new google.maps.Map(document.getElementById('map'), {
                           zoom: 10,
                           center: new google.maps.LatLng(-34.8681439523412, -56.166493557192815), // Centro del mapa
