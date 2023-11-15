@@ -1,5 +1,6 @@
 let latitud_longitud_paquete = [];
 let tablaBultosCargados = document.getElementById("tabla_bultos_cargados")
+const URL = "http://127.0.0.1:8002/api/"
 
 function entregarPaquete(id) {
 
@@ -63,8 +64,13 @@ fetch(URL_BULTOS_CARGADOS)
                     <tr>
                         <td>${bulto.id_bulto}</td>
                         <td>${bulto.matricula}</td>
-                        <td><select id="selectAlmacen${bulto.id}" class="selectBulto"></select></td>
-                        <td><button>Descargar</button></td>
+                        <td>
+                        <form action="${URL}v2/bultos/descargar" method="post">
+                        <input type="hidden" name="id_bulto" value="${bulto.id_bulto}">
+                        <select name="id_almacen" id="selectAlmacen${bulto.id}" class="selectBulto"></select>
+                        <button type="submit">Descargar</button>
+                        </form>
+                        </td>
                     </tr>
                     
                     `
@@ -79,7 +85,7 @@ fetch(URL_BULTOS_CARGADOS)
 
                     selectBultos[i].innerHTML += `
                     
-                    <option>${almacen.direccion}</option>
+                    <option value="${almacen.id}">${almacen.direccion}</option>
             
                     `
 
